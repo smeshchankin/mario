@@ -5,6 +5,22 @@ kaboom({
     debug: true
 });
 
-screen('game', () => {});
+loadRoot('https://i.imgur.com/');
+loadSprite('player', 'Wb1qfhK.png');
+
+screen('game', () => {
+    const map = [
+        '                                        ',
+        '                                        ',
+        '                                        ',
+        '                                        ',
+        '                                        ',
+        '                                        ',
+        '                                        ',
+        '                                        ',
+        '                                        ',
+        '                                        '
+    ];
+});
 
 StaticRange('game');
