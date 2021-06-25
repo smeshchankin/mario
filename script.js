@@ -7,8 +7,11 @@ kaboom({
 
 loadRoot('https://i.imgur.com/');
 loadSprite('player', 'Wb1qfhK.png');
+loadSprite('block', 'M6rwarW.png');
 
-screen('game', () => {
+scene('game', () => {
+    layers(['bg', 'obj', 'ui'], 'obj');
+
     const map = [
         '                                        ',
         '                                        ',
@@ -19,8 +22,15 @@ screen('game', () => {
         '                                        ',
         '                                        ',
         '                                        ',
-        '                                        '
+        '==================================  ===='
     ];
+
+    const cofig = {
+        width: 20,
+        height: 20,
+        '=': [sprite('block'), solid()]
+    };
+    const gameLevel = addLevel(map, config);
 });
 
-StaticRange('game');
+start('game');
