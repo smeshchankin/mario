@@ -25,7 +25,7 @@ scene('game', () => {
         '==================================  ===='
     ];
 
-    const cofig = {
+    const config = {
         width: 20,
         height: 20,
         '=': [sprite('block'), solid()]
