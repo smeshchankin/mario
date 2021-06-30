@@ -26,6 +26,7 @@ scene('game', () => {
         '==================================  ===='
     ];
 
+    const MOVE_SPEED = 120;
     const config = {
         width: 20,
         height: 20,
