@@ -39,6 +39,9 @@ scene('game', () => {
         body(),
         origin('bot')
     ]);
+
+    keyDown('left', () => player.move(-MOVE_SPEED, 0));
+    keyDown('right', () => player.move(MOVE_SPEED, 0));
 });
 
 start('game');
