@@ -27,6 +27,7 @@ scene('game', () => {
     ];
 
     const MOVE_SPEED = 120;
+    const JUMP_FORCE = 480;
     const config = {
         width: 20,
         height: 20,
@@ -43,6 +44,11 @@ scene('game', () => {
 
     keyDown('left', () => player.move(-MOVE_SPEED, 0));
     keyDown('right', () => player.move(MOVE_SPEED, 0));
+    keyPress('space', () => {
+        if (player.grounded()) {
+            player.jump(JUMP_FORCE);
+        }
+    });
 });
 
 start('game');
