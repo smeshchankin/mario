@@ -8,22 +8,32 @@ kaboom({
 
 loadRoot('https://i.imgur.com/');
 loadSprite('player', 'Wb1qfhK.png');
-loadSprite('block', 'M6rwarW.png');
+loadSprite('ground', 'M6rwarW.png');
+loadSprite('block', 'pogC9x5.png');
+loadSprite('surprise', 'gesQ1KP.png');
+loadSprite('noprise', 'bdrlpi6.png');
+loadSprite('coin', 'wbKxhcd.png');
+loadSprite('mushroom', '0wMd92p.png');
 
 scene('game', () => {
     layers(['bg', 'obj', 'ui'], 'obj');
 
     const map = [
         '                                        ',
-        '            ====    ====    ====    ====',
         '                                        ',
         '                                        ',
-        '        ====                            ',
         '                                        ',
         '                                        ',
-        '    ====                                ',
+        '                      %                 ',
         '                                        ',
-        '==================================  ===='
+        '                                        ',
+        '                                        ',
+        '                %   #*#%#               ',
+        '                                        ',
+        '                                        ',
+        '                                        ',
+        '========================================',
+        '========================================'
     ];
 
     const MOVE_SPEED = 120;
@@ -31,7 +41,12 @@ scene('game', () => {
     const config = {
         width: 20,
         height: 20,
-        '=': [sprite('block'), solid()]
+        '=': [sprite('ground'), solid()],
+        '#': [sprite('block'), solid()],
+        '%': [sprite('surprise'), solid(), 'coin-surprise'],
+        '*': [sprite('surprise'), solid(), 'mushroom-surprise'],
+        '$': [sprite('coin')],
+        '^': [sprite('mushroom'), solid()]
     };
     const gameLevel = addLevel(map, config);
     const player = add([
