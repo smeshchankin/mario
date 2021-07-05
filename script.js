@@ -11,7 +11,7 @@ loadSprite('player', 'Wb1qfhK.png');
 loadSprite('ground', 'M6rwarW.png');
 loadSprite('block', 'pogC9x5.png');
 loadSprite('surprise', 'gesQ1KP.png');
-loadSprite('unboxed', 'bdrlpi6.png');
+loadSprite('unboxed', 'bdrLpi6.png');
 loadSprite('coin', 'wbKxhcd.png');
 loadSprite('mushroom', '0wMd92p.png');
 
