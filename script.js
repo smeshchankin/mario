@@ -11,7 +11,7 @@ loadSprite('player', 'Wb1qfhK.png');
 loadSprite('ground', 'M6rwarW.png');
 loadSprite('block', 'pogC9x5.png');
 loadSprite('surprise', 'gesQ1KP.png');
-loadSprite('noprise', 'bdrlpi6.png');
+loadSprite('unboxed', 'bdrlpi6.png');
 loadSprite('coin', 'wbKxhcd.png');
 loadSprite('mushroom', '0wMd92p.png');
 
@@ -37,7 +37,7 @@ scene('game', () => {
     ];
 
     const MOVE_SPEED = 120;
-    const JUMP_FORCE = 480;
+    const JUMP_FORCE = 360;
     const config = {
         width: 20,
         height: 20,
@@ -45,6 +45,7 @@ scene('game', () => {
         '#': [sprite('block'), solid()],
         '%': [sprite('surprise'), solid(), 'coin-surprise'],
         '*': [sprite('surprise'), solid(), 'mushroom-surprise'],
+        '+': [sprite('unboxed'), solid()],
         '$': [sprite('coin')],
         '^': [sprite('mushroom'), solid()]
     };
@@ -56,6 +57,14 @@ scene('game', () => {
         body(),
         origin('bot')
     ]);
+
+    player.on('headbump', obj => {
+        if (obj.is('coin-surprise')) {
+            gameLevel.spawn('$', obj.gridPos.sub(0, 1));
+            destroy(obj);
+            gameLevel.spawn('+', obj.gridPos.sub(0, 0));
+        }
+    });
 
     keyDown('left', () => player.move(-MOVE_SPEED, 0));
     keyDown('right', () => player.move(MOVE_SPEED, 0));
