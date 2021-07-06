@@ -63,6 +63,10 @@ scene('game', () => {
             gameLevel.spawn('$', obj.gridPos.sub(0, 1));
             destroy(obj);
             gameLevel.spawn('+', obj.gridPos.sub(0, 0));
+        } else if (obj.is('mushroom-surprise')) {
+            gameLevel.spawn('^', obj.gridPos.sub(0, 1));
+            destroy(obj);
+            gameLevel.spawn('+', obj.gridPos.sub(0, 0));
         }
     });
 
