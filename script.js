@@ -37,7 +37,7 @@ scene('game', () => {
     ];
 
     const MOVE_SPEED = 120;
-    const JUMP_FORCE = 360;
+    const JUMP_FORCE = 400;
     const config = {
         width: 20,
         height: 20,
@@ -47,9 +47,15 @@ scene('game', () => {
         '*': [sprite('surprise'), solid(), 'mushroom-surprise'],
         '+': [sprite('unboxed'), solid()],
         '$': [sprite('coin')],
-        '^': [sprite('mushroom'), solid()]
+        '^': [sprite('mushroom'), solid(), 'mushroom', body()]
     };
+
     const gameLevel = addLevel(map, config);
+
+    action('mushroom', mushroom => {
+        mushroom.move(MOVE_SPEED / 2, 0);
+    });
+
     const player = add([
         sprite('player'),
         solid(),
