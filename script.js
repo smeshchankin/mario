@@ -76,6 +76,10 @@ scene('game', () => {
         }
     });
 
+    player.collides('mushroom', m => {
+        destroy(m);
+    });
+
     keyDown('left', () => player.move(-MOVE_SPEED, 0));
     keyDown('right', () => player.move(MOVE_SPEED, 0));
     keyPress('space', () => {
