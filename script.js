@@ -52,7 +52,7 @@ scene('game', () => {
 
     const gameLevel = addLevel(map, config);
     const scoreLabel = add([
-        test('$ 0'),
+        text('$ 0'),
         pos(30, 6),
         layer('ui'),
         {
