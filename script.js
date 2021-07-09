@@ -51,6 +51,14 @@ scene('game', () => {
     };
 
     const gameLevel = addLevel(map, config);
+    const scoreLabel = add([
+        test('$ 0'),
+        pos(30, 6),
+        layer('ui'),
+        {
+            value: 0
+        }
+    ]);
 
     action('mushroom', mushroom => {
         mushroom.move(MOVE_SPEED / 2, 0);
@@ -78,6 +86,12 @@ scene('game', () => {
 
     player.collides('mushroom', m => {
         destroy(m);
+    });
+
+    player.collides('coin', c => {
+        destroy(c);
+        scoreLabel.value++;
+        scoreLabel.text = '$ ' + scoreLabel.value;
     });
 
     keyDown('left', () => player.move(-MOVE_SPEED, 0));
