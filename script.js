@@ -46,7 +46,7 @@ scene('game', () => {
         '%': [sprite('surprise'), solid(), 'coin-surprise'],
         '*': [sprite('surprise'), solid(), 'mushroom-surprise'],
         '+': [sprite('unboxed'), solid()],
-        '$': [sprite('coin')],
+        '$': [sprite('coin'), 'coin'],
         '^': [sprite('mushroom'), solid(), 'mushroom', body()]
     };
 
