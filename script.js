@@ -60,6 +60,34 @@ scene('game', () => {
         }
     ]);
 
+    function big() {
+        let timer = 0;
+        let isBig = false;
+        return {
+            update() {
+                if (isBig) {
+                    timer -= dt();
+                    if (timer <= 0) {
+                        this.smallify();
+                    }
+                }
+            },
+            isBig() {
+                return isBig;
+            },
+            smallify() {
+                this.scale = vec2(1);
+                timer = 0;
+                isBig = false;
+            },
+            biggify(time) {
+                this.scale = vec2(2);
+                timer = time;
+                isBig = true;
+            }
+        };
+    }
+
     action('mushroom', mushroom => {
         mushroom.move(MOVE_SPEED / 2, 0);
     });
