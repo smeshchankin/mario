@@ -97,6 +97,7 @@ scene('game', () => {
         solid(),
         pos(30, 0),
         body(),
+        big(),
         origin('bot')
     ]);
 
@@ -114,6 +115,7 @@ scene('game', () => {
 
     player.collides('mushroom', m => {
         destroy(m);
+        player.biggify(6);
     });
 
     player.collides('coin', c => {
