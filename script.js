@@ -49,7 +49,7 @@ scene('game', () => {
         '+': [sprite('unboxed'), solid()],
         '$': [sprite('coin'), 'coin'],
         '^': [sprite('mushroom'), solid(), 'mushroom', body()],
-        '@': [sprite('evil-mushroom'), solid()]
+        '@': [sprite('evil-mushroom'), solid(), 'dangerous']
     };
 
     const gameLevel = addLevel(map, config);
@@ -126,6 +126,10 @@ scene('game', () => {
         scoreLabel.text = '$ ' + scoreLabel.value;
     });
 
+    player.collides('dangerous', (enemy) => {
+        go('lose', { score: scoreLabel.value });
+    })
+
     keyDown('left', () => player.move(-MOVE_SPEED, 0));
     keyDown('right', () => player.move(MOVE_SPEED, 0));
     keyPress('space', () => {
@@ -134,5 +138,10 @@ scene('game', () => {
         }
     });
 });
+
+scene('lose', ({ score }) => {
+    add([text('You lose. Total score: ' + score, 32),
+    origin('center'), pos(width() / 2, height() / 2)]);
+})
 
 start('game');
