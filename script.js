@@ -14,6 +14,7 @@ loadSprite('surprise', 'gesQ1KP.png');
 loadSprite('unboxed', 'bdrLpi6.png');
 loadSprite('coin', 'wbKxhcd.png');
 loadSprite('mushroom', '0wMd92p.png');
+loadSprite('evil-mushroom', 'KPO3fR9.png');
 
 scene('game', () => {
     layers(['bg', 'obj', 'ui'], 'obj');
@@ -31,7 +32,7 @@ scene('game', () => {
         '                %   #*#%#               ',
         '                                        ',
         '                                        ',
-        '                                        ',
+        '                                @    @  ',
         '========================================',
         '========================================'
     ];
@@ -47,7 +48,8 @@ scene('game', () => {
         '*': [sprite('surprise'), solid(), 'mushroom-surprise'],
         '+': [sprite('unboxed'), solid()],
         '$': [sprite('coin'), 'coin'],
-        '^': [sprite('mushroom'), solid(), 'mushroom', body()]
+        '^': [sprite('mushroom'), solid(), 'mushroom', body()],
+        '@': [sprite('evil-mushroom'), solid()]
     };
 
     const gameLevel = addLevel(map, config);
