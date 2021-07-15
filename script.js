@@ -94,6 +94,10 @@ scene('game', () => {
         mushroom.move(MOVE_SPEED / 2, 0);
     });
 
+    action('dangerous', enemy => {
+        enemy.move(-MOVE_SPEED / 2, 0);
+    })
+
     const player = add([
         sprite('player'),
         solid(),
