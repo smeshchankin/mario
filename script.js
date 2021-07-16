@@ -39,6 +39,7 @@ scene('game', () => {
 
     const MOVE_SPEED = 120;
     const JUMP_FORCE = 400;
+    const FALL_DEATH = 400;
     let isJumping = true;
     const config = {
         width: 20,
@@ -142,6 +143,9 @@ scene('game', () => {
     player.action(() => {
         if (player.grounded()) {
             isJumping = false;
+        }
+        if (player.pos.y >= FALL_DEATH) {
+            go('lose', { score: scoreLabel.value });
         }
     });
 
