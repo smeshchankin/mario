@@ -39,6 +39,7 @@ scene('game', () => {
 
     const MOVE_SPEED = 120;
     const JUMP_FORCE = 400;
+    let isJumping = true;
     const config = {
         width: 20,
         height: 20,
@@ -131,13 +132,24 @@ scene('game', () => {
     });
 
     player.collides('dangerous', (enemy) => {
-        go('lose', { score: scoreLabel.value });
+        if (isJumping) {
+            destroy(enemy);
+        } else {
+            go('lose', { score: scoreLabel.value });
+        }
     })
+
+    player.action(() => {
+        if (player.grounded()) {
+            isJumping = false;
+        }
+    });
 
     keyDown('left', () => player.move(-MOVE_SPEED, 0));
     keyDown('right', () => player.move(MOVE_SPEED, 0));
     keyPress('space', () => {
         if (player.grounded()) {
+            isJumping = true;
             player.jump(JUMP_FORCE);
         }
     });
