@@ -144,6 +144,7 @@ scene('game', () => {
         if (player.grounded()) {
             isJumping = false;
         }
+        camPos(player.pos);
         if (player.pos.y >= FALL_DEATH) {
             go('lose', { score: scoreLabel.value });
         }
