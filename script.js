@@ -135,7 +135,9 @@ scene('game', () => {
     player.collides('dangerous', (enemy) => {
         if (isJumping) {
             destroy(enemy);
-        } else {
+        } else if (player.isBig()) {
+            player.smallify();
+        } else {}
             go('lose', { score: scoreLabel.value });
         }
     })
