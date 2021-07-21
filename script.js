@@ -35,10 +35,10 @@ scene('game', () => {
         '                                        ',
         '                %   #*#%#               ',
         '                                        ',
-        '                                        ',
-        '                                @    @  ',
-        '========================================',
-        '========================================'
+        '                                   <>   ',
+        '               @      @            ()   ',
+        '=============================    =======',
+        '=============================    ======='
     ];
 
     const MOVE_SPEED = 120;
@@ -56,7 +56,10 @@ scene('game', () => {
         '$': [sprite('coin'), 'coin'],
         '^': [sprite('mushroom'), solid(), 'mushroom', body()],
         '@': [sprite('evil-mushroom'), solid(), 'dangerous'],
-
+        '<': [sprite('pipe-top-left'), solid(), scale(0.5)],
+        '>': [sprite('pipe-top-right'), solid(), scale(0.5)],
+        '(': [sprite('pipe-bottom-left'), solid()],
+        ')': [sprite('pipe-bottom-right'), solid()]
     };
 
     const gameLevel = addLevel(map, config);
