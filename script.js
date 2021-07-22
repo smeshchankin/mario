@@ -56,8 +56,8 @@ scene('game', () => {
         '$': [sprite('coin'), 'coin'],
         '^': [sprite('mushroom'), solid(), 'mushroom', body()],
         '@': [sprite('evil-mushroom'), solid(), 'dangerous'],
-        '<': [sprite('pipe-top-left'), solid(), scale(0.5)],
-        '>': [sprite('pipe-top-right'), solid(), scale(0.5)],
+        '<': [sprite('pipe-top-left'), solid(), scale(0.5), 'pipe'],
+        '>': [sprite('pipe-top-right'), solid(), scale(0.5), 'pipe'],
         '(': [sprite('pipe-bottom-left'), solid()],
         ')': [sprite('pipe-bottom-right'), solid()]
     };
@@ -148,7 +148,11 @@ scene('game', () => {
         } else {}
             go('lose', { score: scoreLabel.value });
         }
-    })
+    });
+
+    player.collides('pipe', () => {
+        keyPress('down', () => go('game', { score: scoreLabel.value }));
+    });
 
     player.action(() => {
         if (player.grounded()) {
