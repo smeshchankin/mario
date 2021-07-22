@@ -145,7 +145,7 @@ scene('game', () => {
             destroy(enemy);
         } else if (player.isBig()) {
             player.smallify();
-        } else {}
+        } else {
             go('lose', { score: scoreLabel.value });
         }
     });
