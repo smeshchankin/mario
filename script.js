@@ -58,8 +58,8 @@ scene('game', () => {
         '@': [sprite('evil-mushroom'), solid(), 'dangerous'],
         '<': [sprite('pipe-top-left'), solid(), scale(0.5), 'pipe'],
         '>': [sprite('pipe-top-right'), solid(), scale(0.5), 'pipe'],
-        '(': [sprite('pipe-bottom-left'), solid()],
-        ')': [sprite('pipe-bottom-right'), solid()]
+        '(': [sprite('pipe-bottom-left'), solid(), scale(0.5)],
+        ')': [sprite('pipe-bottom-right'), solid(), scale(0.5)]
     };
 
     const gameLevel = addLevel(map, config);
