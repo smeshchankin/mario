@@ -20,7 +20,7 @@ loadSprite('pipe-top-right', 'hj2GK4n.png');
 loadSprite('pipe-bottom-left', 'c1cYSbt.png');
 loadSprite('pipe-bottom-right', 'nqQ79eI.png');
 
-scene('game', () => {
+scene('game', ({ level, score }) => {
     layers(['bg', 'obj', 'ui'], 'obj');
 
     const map = [
@@ -64,11 +64,11 @@ scene('game', () => {
 
     const gameLevel = addLevel(map, config);
     const scoreLabel = add([
-        text('$ 0'),
+        text('$ ' + score),
         pos(30, 6),
         layer('ui'),
         {
-            value: 0
+            value: score
         }
     ]);
 
@@ -151,7 +151,7 @@ scene('game', () => {
     });
 
     player.collides('pipe', () => {
-        keyPress('down', () => go('game', { score: scoreLabel.value }));
+        keyPress('down', () => go('game', { level: level + 1, score: scoreLabel.value }));
     });
 
     player.action(() => {
@@ -179,4 +179,4 @@ scene('lose', ({ score }) => {
     origin('center'), pos(width() / 2, height() / 2)]);
 })
 
-start('game');
+start('game', { level: 0, score: 0 });
