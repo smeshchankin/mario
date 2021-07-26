@@ -46,14 +46,14 @@ scene('game', ({ level, score }) => {
         '=                                      =',
         '=                                      =',
         '=                                      =',
-        '=                     %                =',
         '=                                      =',
-        '=                                      =',
-        '=                                      =',
-        '=               %   #*#%#              =',
-        '=                                      =',
-        '=                                  <>  =',
-        '=                                  ()  =',
+        '=    $                       $         =',
+        '=    $ $                   $ $         =',
+        '=    $ $ $               $ $ $         =',
+        '=    $ $ $ $           $ $ $ $         =',
+        '=    $ $ $ $ $       $ $ $ $ $         =',
+        '=    $ $ $ $ $ $   $ $ $ $ $ $     <>  =',
+        '=    $ $ $ $ $ $ $ $ $ $ $ $ $     ()  =',
         '========================================',
         '========================================'
     ]};
@@ -79,7 +79,7 @@ scene('game', ({ level, score }) => {
         ')': [sprite('pipe-bottom-right'), solid(), scale(0.5)]
     };
 
-    const gameLevel = addLevel(map, config);
+    const gameLevel = addLevel(map['1-' + (level % 2 + 1), config);
     const scoreLabel = add([
         text('$ ' + score),
         pos(30, 6),
