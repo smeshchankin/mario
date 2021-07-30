@@ -143,6 +143,8 @@ scene('game', ({ level, score }) => {
             gameLevel.spawn('^', obj.gridPos.sub(0, 1));
             destroy(obj);
             gameLevel.spawn('+', obj.gridPos.sub(0, 0));
+        } else if (obj.is('block')) {
+            destroy(obj);
         }
     });
 
