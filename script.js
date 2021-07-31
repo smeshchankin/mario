@@ -66,7 +66,7 @@ scene('game', ({ level, score }) => {
         width: 20,
         height: 20,
         '=': [sprite('ground'), solid()],
-        '#': [sprite('block'), solid()],
+        '#': [sprite('block'), solid(), 'block'],
         '%': [sprite('surprise'), solid(), 'coin-surprise'],
         '*': [sprite('surprise'), solid(), 'mushroom-surprise'],
         '+': [sprite('unboxed'), solid()],
