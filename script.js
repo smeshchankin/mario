@@ -164,6 +164,7 @@ scene('game', ({ level, score }) => {
             destroy(enemy);
         } else if (player.isBig()) {
             player.smallify();
+            destroy(enemy);
         } else {
             go('lose', { score: scoreLabel.value });
         }
