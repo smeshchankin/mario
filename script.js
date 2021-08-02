@@ -188,7 +188,8 @@ scene('game', ({ level, score }) => {
     keyPress('space', () => {
         if (player.grounded()) {
             isJumping = true;
-            player.jump(JUMP_FORCE);
+            const jumpPower = player.isBig() ? 1.5 : 1
+            player.jump(JUMP_FORCE * jumpPower);
         }
     });
 });
