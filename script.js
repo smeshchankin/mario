@@ -166,6 +166,7 @@ scene('game', ({ level, score }) => {
             player.smallify();
             destroy(enemy);
         } else {
+            camShake(10);
             go('lose', { score: scoreLabel.value });
         }
     });
