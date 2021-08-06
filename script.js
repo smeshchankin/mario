@@ -71,7 +71,7 @@ scene('game', ({ level, score }) => {
         '*': [sprite('surprise'), solid(), 'mushroom-surprise'],
         '+': [sprite('unboxed'), solid()],
         '$': [sprite('coin'), 'coin'],
-        '^': [sprite('mushroom'), solid(), body(), 'mushroom'],
+        '^': [sprite('mushroom'), solid(), body(), 'mushroom', { dir: vec2(1, 0), speed: MOVE_SPEED / 2 }],
         '@': [sprite('evil-mushroom'), solid(), body(), 'dangerous'],
         '<': [sprite('pipe-top-left'), solid(), scale(0.5), 'pipe'],
         '>': [sprite('pipe-top-right'), solid(), scale(0.5), 'pipe'],
@@ -118,7 +118,7 @@ scene('game', ({ level, score }) => {
     }
 
     action('mushroom', mushroom => {
-        mushroom.move(MOVE_SPEED / 2, 0);
+        mushroom.move(mushroom.dir.scale(mushroom.speed));
     });
 
     action('dangerous', enemy => {
