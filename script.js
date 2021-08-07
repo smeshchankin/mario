@@ -72,7 +72,7 @@ scene('game', ({ level, score }) => {
         '+': [sprite('unboxed'), solid()],
         '$': [sprite('coin'), 'coin'],
         '^': [sprite('mushroom'), solid(), body(), 'mushroom', { dir: vec2(1, 0), speed: MOVE_SPEED / 2 }],
-        '@': [sprite('evil-mushroom'), solid(), body(), 'dangerous'],
+        '@': [sprite('evil-mushroom'), solid(), body(), 'dangerous', { dir: vec2(-1, 0), speed: MOVE_SPEED / 2 }],
         '<': [sprite('pipe-top-left'), solid(), scale(0.5), 'pipe'],
         '>': [sprite('pipe-top-right'), solid(), scale(0.5), 'pipe'],
         '(': [sprite('pipe-bottom-left'), solid(), scale(0.5)],
@@ -122,7 +122,7 @@ scene('game', ({ level, score }) => {
     });
 
     action('dangerous', enemy => {
-        enemy.move(-MOVE_SPEED / 2, 0);
+        enemy.move(enemy.dir.scale(enemy.speed));
     })
 
     const player = add([
