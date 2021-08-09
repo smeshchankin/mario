@@ -20,7 +20,7 @@ loadSprite('pipe-top-right', 'hj2GK4n.png');
 loadSprite('pipe-bottom-left', 'c1cYSbt.png');
 loadSprite('pipe-bottom-right', 'nqQ79eI.png');
 
-scene('game', ({ level, score }) => {
+scene('game', ({ level, life, score }) => {
     layers(['bg', 'obj', 'ui'], 'obj');
 
     const map = {
@@ -81,11 +81,12 @@ scene('game', ({ level, score }) => {
 
     const gameLevel = addLevel(map['1-' + (level % 2 + 1)], config);
     const scoreLabel = add([
-        text('$ ' + score),
+        text('(\/) ' + life + '   $ ' + score),
         pos(30, 6),
         layer('ui'),
         {
-            value: score
+            value: score,
+            life: life
         }
     ]);
 
@@ -152,7 +153,7 @@ scene('game', ({ level, score }) => {
     player.collides('coin', c => {
         destroy(c);
         scoreLabel.value++;
-        scoreLabel.text = '$ ' + scoreLabel.value;
+        scoreLabel.text = '(\/) ' + scoreLabel.life + '   $ ' + scoreLabel.value;
     });
 
     player.collides('dangerous', (enemy) => {
@@ -168,7 +169,7 @@ scene('game', ({ level, score }) => {
     });
 
     player.collides('pipe', () => {
-        keyPress('down', () => go('game', { level: level + 1, score: scoreLabel.value }));
+        keyPress('down', () => go('game', { level: level + 1, life: scoreLabel.life,  score: scoreLabel.value }));
     });
 
     player.action(() => {
@@ -197,4 +198,4 @@ scene('lose', ({ score }) => {
     origin('center'), pos(width() / 2, height() / 2)]);
 })
 
-start('game', { level: 0, score: 0 });
+start('game', { level: 0, life: 3, score: 0 });
