@@ -163,8 +163,14 @@ scene('game', ({ level, life, score }) => {
             player.smallify();
             destroy(enemy);
         } else {
-            camShake(10);
-            go('lose', { score: scoreLabel.value });
+            if (scoreLabel.life > 0) {
+                scoreLabel.life--;
+                scoreLabel.text = '(\/) ' + scoreLabel.life + '   $ ' + scoreLabel.value;
+                destroy(enemy);
+            } else {
+                camShake(10);
+                go('lose', { score: scoreLabel.value });
+            }
         }
     });
 
